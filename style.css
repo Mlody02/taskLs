@@ -1,0 +1,225 @@
+body {
+	margin: 0px;
+}
+
+/* list of tasks */
+
+.taskListContainer {
+	/* overflow-y: auto; */
+}
+
+.taskList {
+	display: flex;
+	flex-direction: column;
+	overflow-y: auto;
+	height: 90vh;
+	column-gap: 20px;
+	scrollbar-gutter: stable;
+}
+
+/* task */
+
+.taskDiv {
+	box-shadow: black;
+	background-color: white;
+	border-radius: 2vh;
+	margin: 8px 17px;
+	height: 75px;
+	box-shadow: 0px 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	transition: 1s, scale 0.1s;
+	transition-delay: 0s;
+	display: grid;
+	grid-template-areas:
+		"done name category deadline"
+		"interaction description description description"
+	;
+	grid-template-columns: 1fr 15fr 9fr 6fr;
+	grid-template-rows: 21px auto;
+	row-gap: 10px;
+	padding: 2vh;
+	border: 3px solid transparent;
+
+	>div {
+		padding: 2px;
+
+		>* {
+			margin: 0;
+			padding: 0;
+		}
+	}
+}
+
+.taskDiv:hover {
+	box-shadow: 0px 10px 16px 5px rgba(0, 0, 0, 0.2), 0 6px 20px 5px rgba(0, 0, 0, 0.19);
+	border: 3px solid white;
+	scale: 1.01;
+}
+
+.taskDone {
+	grid-area: done;
+}
+
+.taskName {
+	grid-area: name;
+}
+
+.taskCategory {
+	grid-area: category;
+}
+
+.taskDeadline {
+	grid-area: deadline;
+}
+
+.taskInteraction {
+	grid-area: interaction;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+
+	button {
+		width: 80%;
+		max-width: 50px;
+		text-align: center;
+		border-radius: 5px;
+		border: 0px;
+		font-size: 12px;
+		padding: 1px;
+		background-color: gray;
+		color: #fafafa;
+	}
+
+	button.close {
+		position: absolute;
+		top: 5px;
+		right: 5px;
+		color: red;
+		background-color: unset;
+		border: 2px red solid;
+		border-radius: 50%;
+		height: 2em;
+		width: 2em;
+	}
+
+	button.save {
+		display: none;
+	}
+}
+
+.taskDescription {
+	grid-area: description;
+	overflow-y: hidden;
+	height: auto;
+}
+
+/* filter side panel */
+.taskFilter {
+	height: 100%;
+	width: 100%;
+	background-color: #fafafa;
+	display: flex;
+	flex-direction: column;
+
+	>div {
+		/* margin: 15px 0; */
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+.highlight {
+	background-color: rgba(255, 255, 0, 0.482);
+}
+
+/* add new / edit task  */
+
+.taskEdit {
+	display: grid;
+	grid-template-rows: 2fr 20fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-areas:
+		"name category deadline"
+		"description description description"
+		"done empty interaction"
+	;
+	position: absolute;
+	margin: 5vh 5vw;
+	padding: 2vh 2vw;
+	height: 84vh;
+	width: 86vw;
+	border-radius: 2vh;
+	background-color: #fafafa;
+	box-shadow: 0px 0px 100px 25px rgba(0, 0, 0, 0.7);
+	z-index: 1;
+	transform: scale(0);
+	transform-origin: 100% 50%;
+	transition: all 0.2s ease-in-out;
+
+	input,
+	select {
+		display: none;
+		width: 100%;
+	}
+
+	textarea {
+		display: none;
+		width: 95%;
+		height: 95%;
+		resize: none;
+	}
+}
+
+
+button.add {
+	position: absolute;
+	bottom: 6vh;
+	right: 18.5vw;
+	height: 1.5em;
+	width: 1.5em;
+	color: blue;
+	background-color: transparent;
+	font-size: 4vh;
+	border: 0px blue solid;
+	border-radius: 50%;
+	z-index: 0;
+}
+
+@media (orientation: landscape) {
+	body {
+		display: grid;
+		grid-template-columns: 5fr 1fr;
+		grid-template-rows: 100%;
+		background-color: #fafafa;
+	}
+
+	.taskList {
+		grid-column: 1;
+		background-color: white;
+		border-radius: 6vh;
+		padding: 2vh;
+		margin: 2vh;
+		box-shadow: inset 10px 10px 16px 0px rgba(0, 0, 0, 0.2), inset -6px -6px 20px 0px rgba(0, 0, 0, 0.2);
+	}
+}
+
+@media (orientation: portrait) {
+
+	.taskDiv {
+		height: 50px;
+		grid-template-areas:
+			"done name category deadline"
+		;
+		grid-template-columns: 1fr 30fr 18fr 12fr;
+		grid-template-rows: 1fr;
+
+		>div {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+
+	div.taskDescription {
+		display: none;
+	}
+}

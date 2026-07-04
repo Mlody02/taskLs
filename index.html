@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to do list</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="taskListContainer">
+        <div class="taskList"></div>
+    </div>
+    <div class="taskFilter">
+        <div class="regexFilter">
+            <h3>Search</h3>
+            <div class="input">
+                <input type="text" name="regex" id="regex">
+                <label><input type="checkbox" name="exactSearch" id="exactSearch">exact search</label>
+            </div>
+        </div>
+        <div class="doneFilter">
+            <h3>Filter by complition</h3>
+            <label>show complited<input type="checkbox" id="complited"></label>
+            <label>show not complited<input type="checkbox" id="nComplited" checked></label>
+        </div>
+        <div class="categoryFilter">
+            <h3>Filter by category</h3>
+            <div class="input"></div>
+        </div>
+    </div>
+    <div class="taskEdit">
+        <div class="taskName">
+            <h1></h1>
+            <input type="text" placeholder="name">
+        </div>
+        <div class="taskCategory">
+            <h2></h2>
+            <select name="category">
+                <option disabled selected value="-1">choose category</option>
+            </select>
+        </div>
+        <div class="taskDeadline">
+            <h4></h4>
+            <input type="datetime-local">
+        </div>
+        <div class="taskDescription">
+            <p></p>
+            <textarea></textarea>
+        </div>
+        <div class="taskDone">
+            <label for="done">done?</label>
+            <input type="checkbox" id="done">
+        </div>
+        <div class="taskInteraction">
+            <button class="edit">edit</button>
+            <button class="close">&#10006;</button>
+            <button class="save">save</button>
+        </div>
+        <div class="taskId">
+            <input type="hidden">
+        </div>
+    </div>
+    <button class="add">&plus;</button>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
